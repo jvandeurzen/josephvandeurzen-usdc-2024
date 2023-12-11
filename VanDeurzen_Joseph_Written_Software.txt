@@ -1,0 +1,53 @@
+Overall process and decision making:
+
+        To begin, I initially just checked to see if each line contained the search term.
+    In most of my testing, this worked seemingly as I wanted it to. My first issues with
+    this strategy came up as I thought about multiple occurences on the same line. I then
+    split the string by search term, but that meant that if larger words contained it they
+    would be counted as duplicates, such as "the" within "then".
+        When I found this issue, I started over. The inital code is comented out and
+    included as well. In the new attempt, I split each line by spaces. This gave me a list
+    that I could index over and compare each one to the search string. Luckily one of my
+    unit tests included "profound" because within the provided test, it was right next to
+    a ";". This resulted in me comparing "profound;" to "profound", which did not work. I
+    then added a replace that would remove any punctuation, as well as a trim to remove any
+    whitespace. This makes it so all comparisons are only word for word, but still will
+    add any duplicates if they are on the same line.
+
+Testing and iteration:
+
+    Your strategy for writing tests:
+        
+            I first looked at the provided test cases, then added the ones suggested in the
+        assignment document. I initally used "I" because I wanted to test for capitalization
+        as well, but then realized it could be used for duplicates. I then used "e" to test
+        for duplicates and ensure it worked on each line. After perfecting the test, it lead
+        me to realize that testing for portions of words was not in the task, as the code 
+        added to pass this made me fail test1.
+            If given more time, I would generate more test inputs that include more duplicates
+        on each line, with more variation in punctuation, capitalization, and whitespacing. I
+        believe that the replace and trim should fix these issues though.
+
+    What about your solution you are proudest of:
+
+            I am proudest of how I used the "e" testing to figure out that what I was testing
+        for was not a requirement of the code. Taking the time to build the test may have felt
+        like a mistake initally, but it lead to me realizing the absolute need to refactor the
+        initial version I had written. Additionally, the changes and new version were significantly
+        better than how I had initially attempted to solve it. By failing at first, I found a 
+        way to solve that made it much easier to meet all the requirements and test the code.
+
+    Which part of the problem was most difficult to solve:
+
+            Once I had realized we needed to handle duplicates, my mind went blank for a bit.
+        This lead to the initial split by search term idea, that proved to be good in theory,
+        but only for an algorithim looking for parital words. The refactor made this much easier,
+        and I was probably overthinking it looking back with hindsight.
+
+    Edge cases you addressed in your code:
+
+            By the luck of having "profound" used as a test case, I came accross the edge case
+        of punctuation. By using replace and trim, I should stop that from being an issue.
+            An additional edge case was the duplicates on each line. The example I am currently
+        using does not test for that, but given more time I would come up with one that has
+        duplicated words within and between lines.
